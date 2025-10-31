@@ -182,3 +182,67 @@ function showSaveToast(message) {
     setTimeout(() => toast.remove(), 300);
   }, 2000);
 }
+
+// ===== PDF Comment System =====
+
+// Load saved comments from localStorage
+let savedComments = JSON.parse(localStorage.getItem('pdfComments')) || {};
+
+// Select all comment forms
+const commentForms = document.querySelectorAll('.comment-form');
+
+// Initialize existing comments on page load
+document.querySelectorAll('.pdf-box').forEach(box => {
+  const pdfId = box.getAttribute('data-pdf-id');
+  const commentList = box.querySelector('.comment-list');
+  const comments = savedComments[pdfId] || [];
+
+  comments.forEach(text => {
+    const li = document.createElement('li');
+    li.textContent = text;
+    commentList.appendChild(li);
+  });
+});
+
+// Handle comment submissions
+commentForms.forEach(form => {
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const input = form.querySelector('.comment-input');
+    const text = input.value.trim();
+    const pdfId = form.closest('.pdf-box').getAttribute('data-pdf-id');
+    const commentList = form.closest('.pdf-box').querySelector('.comment-list');
+
+    if (text === '') return;
+
+    // Save to local data
+    if (!savedComments[pdfId]) savedComments[pdfId] = [];
+    savedComments[pdfId].push(text);
+    localStorage.setItem('pdfComments', JSON.stringify(savedComments));
+
+    // Create new comment element
+    const li = document.createElement('li');
+    li.textContent = text;
+    li.classList.add('fade-in');
+    commentList.appendChild(li);
+
+    // Clear input and show toast
+    input.value = '';
+    showCommentToast('💬 Comment added!');
+  });
+});
+
+// ===== Toast notification for feedback =====
+function showCommentToast(message) {
+  const toast = document.createElement('div');
+  toast.className = 'comment-toast';
+  toast.innerText = message;
+  document.body.appendChild(toast);
+
+  setTimeout(() => toast.classList.add('show'), 50);
+  setTimeout(() => {
+    toast.classList.remove('show');
+    setTimeout(() => toast.remove(), 300);
+  }, 2000);
+}
