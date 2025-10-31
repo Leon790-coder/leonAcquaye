@@ -317,49 +317,106 @@ footer {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ---------- Responsive Nav Bars ---------- */
+/* 🌐 Facebook-Style Responsive Navigation Bars */
 
-/* For screens smaller than 768px (mobile) */
+/* Top Navigation */
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1877f2; /* Facebook blue */
+  padding: 12px 20px;
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.top-nav .logo {
+  font-weight: 700;
+  font-size: 1.3rem;
+  letter-spacing: 0.5px;
+}
+
+.top-nav .menu {
+  display: flex;
+  gap: 20px;
+}
+
+.top-nav .menu a {
+  color: #fff;
+  font-weight: 500;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.top-nav .menu a:hover {
+  color: #dfe6f9;
+}
+
+/* Bottom Navigation */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: #fff;
+  border-top: 1px solid #ddd;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+}
+
+.bottom-nav a {
+  text-align: center;
+  color: #606770;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: 0.3s;
+}
+
+.bottom-nav a:hover {
+  color: #1877f2;
+}
+
+/* Active Bottom Nav Item */
+.bottom-nav a.active {
+  color: #1877f2;
+  font-weight: 600;
+}
+
+/* 📱 Mobile View */
 @media (max-width: 768px) {
-
-  /* Top Nav */
   .top-nav {
     flex-direction: column;
     align-items: flex-start;
-    padding: 10px;
-    gap: 10px;
+    background: linear-gradient(90deg, #1877f2, #145dbf);
+    padding: 15px;
   }
 
-  .top-nav a {
+  .top-nav .menu {
     width: 100%;
-    text-align: left;
-    padding: 8px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-  }
-
-  /* Bottom Nav */
-  .bottom-nav {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 60px;
     display: flex;
     justify-content: space-around;
-    align-items: center;
-    background: #0f172a;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    z-index: 999;
+    margin-top: 10px;
+  }
+
+  .top-nav .menu a {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 8px 12px;
+    border-radius: 8px;
+  }
+
+  .bottom-nav {
+    height: 65px;
+    background: linear-gradient(90deg, #f8f9fb, #e7ebf0);
   }
 
   .bottom-nav a {
-    flex: 1;
-    text-align: center;
-    font-size: 0.9rem;
-    color: white;
-  }
-
-  .bottom-nav a:hover {
-    background: rgba(255,255,255,0.1);
+    font-size: 0.85rem;
   }
 }
