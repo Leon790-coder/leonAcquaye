@@ -67,3 +67,118 @@ likeButtons.forEach(button => {
     }, 200);
   });
 });
+
+// ===== PDF Share System =====
+
+// Select all share buttons
+const shareButtons = document.querySelectorAll('.share');
+
+shareButtons.forEach(button => {
+  button.addEventListener('click', async () => {
+    const pdfName = button.getAttribute('data-pdf-name');
+    const pdfLink = button.getAttribute('data-pdf-link');
+
+    // Full shareable URL
+    const shareUrl = window.location.origin + '/' + pdfLink;
+
+    // If browser supports native sharing (mobile-friendly)
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: pdfName,
+          text: `Check out this PDF: ${pdfName}`,
+          url: shareUrl,
+        });
+        showShareToast('✅ Shared successfully!');
+      } catch (err) {
+        showShareToast('❌ Share cancelled.');
+      }
+    } else {
+      // Fallback: Copy link to clipboard
+      try {
+        await navigator.clipboard.writeText(shareUrl);
+        showShareToast('🔗 Link copied to clipboard!');
+      } catch (err) {
+        alert('Could not copy link automatically.');
+      }
+    }
+
+    // Animation feedback
+    button.style.transform = 'scale(0.9)';
+    setTimeout(() => (button.style.transform = 'scale(1)'), 150);
+  });
+});
+
+// ===== Small toast notification for feedback =====
+function showShareToast(message) {
+  const toast = document.createElement('div');
+  toast.className = 'share-toast';
+  toast.innerText = message;
+  document.body.appendChild(toast);
+
+  setTimeout(() => toast.classList.add('show'), 50);
+  setTimeout(() => {
+    toast.classList.remove('show');
+    setTimeout(() => toast.remove(), 300);
+  }, 2000);
+}
+
+// ===== PDF Save System (Local Save / Bookmark) =====
+
+// Load saved PDFs from localStorage
+let savedPDFs = JSON.parse(localStorage.getItem('savedPDFs')) || [];
+
+// Select all save buttons
+const saveButtons = document.querySelectorAll('.save');
+
+// Initialize buttons (restore saved state)
+saveButtons.forEach(button => {
+  const pdfId = button.getAttribute('data-pdf-id');
+  if (savedPDFs.includes(pdfId)) {
+    button.innerText = '💾 Saved';
+    button.classList.add('saved');
+  }
+});
+
+// Listen for save button clicks
+saveButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const pdfId = button.getAttribute('data-pdf-id');
+    const pdfName = button.getAttribute('data-pdf-name');
+
+    if (savedPDFs.includes(pdfId)) {
+      // Unsave
+      savedPDFs = savedPDFs.filter(id => id !== pdfId);
+      button.innerText = '💾 Save';
+      button.classList.remove('saved');
+      showSaveToast(`❌ Removed "${pdfName}" from saved PDFs`);
+    } else {
+      // Save
+      savedPDFs.push(pdfId);
+      button.innerText = '💾 Saved';
+      button.classList.add('saved');
+      showSaveToast(`✅ Saved "${pdfName}"`);
+    }
+
+    // Save to localStorage
+    localStorage.setItem('savedPDFs', JSON.stringify(savedPDFs));
+
+    // Add a small animation
+    button.style.transform = 'scale(0.9)';
+    setTimeout(() => (button.style.transform = 'scale(1)'), 150);
+  });
+});
+
+// ===== Toast Notification =====
+function showSaveToast(message) {
+  const toast = document.createElement('div');
+  toast.className = 'save-toast';
+  toast.innerText = message;
+  document.body.appendChild(toast);
+
+  setTimeout(() => toast.classList.add('show'), 50);
+  setTimeout(() => {
+    toast.classList.remove('show');
+    setTimeout(() => toast.remove(), 300);
+  }, 2000);
+}
