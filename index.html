@@ -1,19 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Tiktok</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PDFHub — Buy, Sell & Download PDFs</title>
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Icons (Font Awesome) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
+
 <body>
-    <H1>TIKTOK</H1>
-    <p>hi</p>
-    <div>
-        <input type="text" name="" placeholder="ENTER YOUR NAME" id=""><br>
-        <input type="password" name="" placeholder="ENTER YOUR PASSWORD" id=""><br>
-        <input type="email" name="" placeholder="ENTERE YOUR EMAIL" id=""><br>
-        <BUTTON>SIGNUP</BUTTON>
-    </div>
+  <!-- ===== TOP NAVBAR ===== -->
+  <header class="top-nav">
+    <h1 class="logo">PDFHub</h1>
+    <nav class="top-menu">
+      <a href="#">Home</a>
+      <a href="#">Explore</a>
+      <a href="#">Upload</a>
+      <a href="#">Account</a>
+      <a href="#">Support</a>
+    </nav>
+  </header>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="container">
+    <h2 class="section-title">Latest PDFs</h2>
+
+    <ul class="pdf-list">
+      <!-- PDF Item 1 -->
+      <li class="pdf-box">
+        <h3>Mastering JavaScript.pdf</h3>
+        <div class="pdf-actions">
+          <button class="download" data-pdf="mathspractice.pdf"><i class="fa-solid fa-download"></i> Download</button>
+          <button class="like"><i class="fa-regular fa-heart"></i> Like</button>
+          <button><i class="fa-solid fa-share"></i> Share</button>
+          <button><i class="fa-solid fa-bookmark"></i> Save</button>
+          <button><i class="fa-solid fa-comment"></i> Comment</button>
+          <button><i class="fa-solid fa-info-circle"></i> Details</button>
+          <button><i class="fa-solid fa-cart-plus"></i> Buy</button>
+        </div>
+      </li>
+
+      <!-- PDF Item 2 -->
+      <li class="pdf-box">
+        <h3>Design Templates Collection.pdf</h3>
+        <div class="pdf-actions">
+          <button class="download" data-pdf="path/to/DesignTemplatesCollection.pdf"><i class="fa-solid fa-download"></i> Download</button>
+          <button class="like"><i class="fa-regular fa-heart"></i> Like</button>
+          <button><i class="fa-solid fa-share"></i> Share</button>
+          <button><i class="fa-solid fa-bookmark"></i> Save</button>
+          <button><i class="fa-solid fa-comment"></i> Comment</button>
+          <button><i class="fa-solid fa-info-circle"></i> Details</button>
+          <button><i class="fa-solid fa-cart-plus"></i> Buy</button>
+        </div>
+      </li>
+
+      <!-- Future PDFs Placeholder -->
+      <li class="pdf-box future">Future PDF Upload 1</li>
+      <li class="pdf-box future">Future PDF Upload 2</li>
+      <li class="pdf-box future">Future PDF Upload 3</li>
+      <li class="pdf-box future">Future PDF Upload 4</li>
+    </ul>
+  </main>
+
+  <!-- ===== BOTTOM NAVBAR ===== -->
+  <nav class="bottom-nav">
+    <a href="#"><i class="fa-solid fa-upload"></i> Upload</a>
+    <a href="#"><i class="fa-solid fa-cart-shopping"></i> Buy</a>
+    <a href="#"><i class="fa-solid fa-store"></i> Sell</a>
+    <a href="#"><i class="fa-solid fa-bell"></i> Notifications</a>
+    <a href="#"><i class="fa-solid fa-user"></i> Profile</a>
+  </nav>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    © 2025 PDFHub — Your Digital PDF Marketplace
+  </footer>
+
+  <!-- External JS -->
+  <script src="script.js"></script>
 </body>
 </html>

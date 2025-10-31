@@ -1,60 +1,202 @@
+/* ====== GLOBAL STYLE ====== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
 body {
-    background: black;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    animation: big 3s ease;
+  background: linear-gradient(135deg, #e0eafc, #cfdef3);
+  color: #1f2937;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-@keyframes big {
-    0% {font-size: 0.1rem; font-weight: 400;}
-    50% {font-size: 0.6rem; font-weight: 600;}
-    100% {font-size: 1.1rem; font-weight: 900;}
+/* ====== TOP NAV ====== */
+.top-nav {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
-div {
-    background: grey;
-    height: 85vh;
-    width: 40vw;
-    margin-top: 3rem;
-    border-radius: 15px;
-    box-shadow: 8px 8px blue, -8px -8px red;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transition: all 4s ease-in-out;
-    animation: grow 5s;
+.logo {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #2563eb;
 }
 
-@keyframes grow {
-    0% { clip-path: polygon(50% 50%, 50% 50%, 50% 50%); }
-  100% { clip-path: polygon(50% 0%, 0% 100%, 100% 100%); }
+.top-menu a {
+  text-decoration: none;
+  color: #1f2937;
+  margin-left: 20px;
+  font-weight: 500;
+  transition: 0.3s;
 }
 
-input {
-    padding: 0.8rem 1.2rem;
-    margin-bottom: 15px;
-    box-shadow: 6px 6px blue, -6px -6px red;
-    border-radius: 10px;
-    background: black;
-    color: white;
-    border: none;
+.top-menu a:hover {
+  color: #2563eb;
 }
 
-input::placeholder {
-    font-size: 1rem;
-    font-weight: 900;
+/* ====== MAIN CONTAINER ====== */
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin-top: 40px;
 }
 
-button {
-    padding: 0.9rem 1.6rem;
-    background: red;
-    color: blue;
-    font-size: 1rem;
-    font-weight:900;
-    border: none;
+.section-title {
+  font-size: 1.7rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 25px;
+  color: #1e3a8a;
 }
+
+/* ====== PDF GRID ====== */
+.pdf-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 25px;
+  justify-items: center;
+}
+
+/* ====== PDF BOX ====== */
+.pdf-box {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 250px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.pdf-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.pdf-box h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 15px;
+  color: #111827;
+}
+
+/* ====== ACTION BUTTONS ====== */
+.pdf-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.pdf-actions button {
+  background: #2563eb;
+  border: none;
+  color: white;
+  font-size: 0.8rem;
+  border-radius: 8px;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.pdf-actions button:hover {
+  background: #1e40af;
+  transform: scale(1.05);
+}
+
+/* ====== FUTURE PDF BOXES ====== */
+.future {
+  opacity: 0.6;
+  font-style: italic;
+}
+
+/* ====== BOTTOM NAV ====== */
+.bottom-nav {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+.bottom-nav a {
+  text-decoration: none;
+  color: #1f2937;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.8rem;
+  transition: 0.3s;
+}
+
+.bottom-nav a i {
+  font-size: 1.2rem;
+  margin-bottom: 3px;
+}
+
+.bottom-nav a:hover {
+  color: #2563eb;
+  transform: translateY(-3px);
+}
+
+/* ====== FOOTER ====== */
+footer {
+  margin: 60px 0 80px;
+  text-align: center;
+  color: #4b5563;
+  font-size: 0.9rem;
+}
+
+.toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: rgba(30, 41, 59, 0.95);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-weight: 600;
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 9999;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.toast.success { background: linear-gradient(135deg, #22c55e, #16a34a); }
+.toast.error { background: linear-gradient(135deg, #ef4444, #dc2626); }
+.toast.info { background: linear-gradient(135deg, #3b82f6, #2563eb); }
