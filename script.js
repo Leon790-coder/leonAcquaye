@@ -246,3 +246,37 @@ function showCommentToast(message) {
     setTimeout(() => toast.remove(), 300);
   }, 2000);
 }
+
+// --- Upload Button Logic ---
+document.addEventListener("DOMContentLoaded", () => {
+  const uploadBtn = document.querySelector(".bottom-nav .upload");
+  
+  if (uploadBtn) {
+    // Create hidden file input
+    const fileInput = document.createElement("input");
+    fileInput.type = "file";
+    fileInput.accept = ".pdf";
+    fileInput.style.display = "none";
+    document.body.appendChild(fileInput);
+
+    // Click upload button to trigger file picker
+    uploadBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      fileInput.click();
+    });
+
+    // Handle file selection
+    fileInput.addEventListener("change", (event) => {
+      const file = event.target.files[0];
+      if (file) {
+        // You can later send this to server here
+        alert(`📂 Uploading "${file.name}" ...`);
+        
+        // Simulate upload success
+        setTimeout(() => {
+          alert(`✅ "${file.name}" uploaded successfully!`);
+        }, 1500);
+      }
+    });
+  }
+});
