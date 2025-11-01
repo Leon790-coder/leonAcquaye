@@ -281,3 +281,21 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+// --- PDF Search Filter ---
+document.addEventListener("DOMContentLoaded", () => {
+  const searchInput = document.getElementById("pdfSearchInput");
+  const pdfBoxes = document.querySelectorAll(".pdf-box");
+
+  searchInput.addEventListener("input", () => {
+    const query = searchInput.value.toLowerCase();
+
+    pdfBoxes.forEach(box => {
+      const pdfName = box.textContent.toLowerCase();
+      if (pdfName.includes(query)) {
+        box.style.display = "flex";
+      } else {
+        box.style.display = "none";
+      }
+    });
+  });
+});
