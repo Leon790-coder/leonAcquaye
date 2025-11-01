@@ -299,3 +299,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+//firebase.js import statements
+import { db, storage, auth } from "./firebase.js";
+// You can now use db, storage, and auth in this script

@@ -106,7 +106,34 @@
     © 2025 PDFHub — Your Digital PDF Marketplace
   </footer>
 
+  <!--my firebase-->
+
+  <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyAkPvSs08icG6iPAie7CI6erbXt7lrmQkk",
+    authDomain: "pdf-hub-abe72.firebaseapp.com",
+    projectId: "pdf-hub-abe72",
+    storageBucket: "pdf-hub-abe72.firebasestorage.app",
+    messagingSenderId: "522811029037",
+    appId: "1:522811029037:web:0bae02d0780db47db96aa4",
+    measurementId: "G-JH8L41HNH7"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+
   <!-- External JS -->
-  <script src="script.js"></script>
+  <script type="module"src="script.js"></script>
+  <script type="module" src="firebase.js"></script>
 </body>
 </html>
